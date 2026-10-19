@@ -1,1 +1,18 @@
-
+{
+  "users": [
+    { "name": "Rahul", "password": "rahul4821", "expires": "2026-11-19" },
+    { "name": "Amit", "password": "amit7305", "expires": "2026-11-25" }
+  ],
+  "apps": [
+    {
+      "name": "My App 1",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Tools",
+      "version": "v1.0",
+      "size": "20 MB",
+      "rating": "4.8",
+      "badge": "New"
+    }
+  ]
+}
