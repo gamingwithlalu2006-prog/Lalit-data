@@ -1,8 +1,8 @@
 "users": [
     { "name": "Owner ", "password": "Lalit", "expires": "2027-11-18", "device": "EE10F1D5AEDC9811" },
     { "name": "suresh", "password": "LC4m81Zp", "expires": "2026-10-21", "device": "97C8AB06C547EC00" },
-    { "name": "User 3", "password": "LC9t53Vw", "expires": "2026-11-18", "device": "" },
-    { "name": "User 4", "password": "LC2r67Hd", "expires": "2026-11-18", "device": "" },
+    { "name": "tilak", "password": "LC9t53Vw", "expires": "2026-10-20", "device": "0A7E2DCEEBCBFF5C" },
+    { "name": "User 4", "password": "LC2r67Hd", "expires": "2026-10-20", "device": "" },
     { "name": "User 5", "password": "LC5n34Bj", "expires": "2026-11-18", "device": "" }
   ],
   "apps": [
