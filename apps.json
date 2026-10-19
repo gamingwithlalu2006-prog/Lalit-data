@@ -1,8 +1,41 @@
+
 {
   "users": [
-    { "name": "Lalit", "password": "Lalit2010", "expires": "2027-11-19" },
-    { "name": "Amit", "password": "Sureshbaby", "expires": "2026-11-25" }
-    { "name": "Suresh", "password": "Sureshbabu", "expires": "2026-10-20" }
+    {
+      "name": "Rahul",
+      "password": "rahul4821",
+      "expires": "2026-11-19"
+    },
+    {
+      "name": "Amit",
+      "password": "amit7305",
+      "expires": "2026-11-25"
+    },
+    {
+      "name": "Lalit",
+      "password": "0000",
+      "expires": "2027-11-30"
+    },
+    {
+      "name": "suresh",
+      "password": "2008",
+      "expires": "2026-10-20"
+    },
+    {
+      "name": "User5",
+      "password": "user58341",
+      "expires": "2026-12-10"
+    },
+    {
+      "name": "User6",
+      "password": "user69473",
+      "expires": "2026-12-15"
+    },
+    {
+      "name": "User7",
+      "password": "user71684",
+      "expires": "2026-12-20"
+    }
   ],
   "apps": [
     {
@@ -87,3 +120,4 @@
     }
   ]
 }
+
