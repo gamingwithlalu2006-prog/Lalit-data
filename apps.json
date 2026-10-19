@@ -1,5 +1,4 @@
-{
-  "users": [
+"users": [
     { "name": "Owner ", "password": "Lalit", "expires": "2027-11-18", "device": "EE10F1D5AEDC9811" },
     { "name": "suresh", "password": "LC4m81Zp", "expires": "2026-10-21", "device": "97C8AB06C547EC00" },
     { "name": "User 3", "password": "LC9t53Vw", "expires": "2026-11-18", "device": "" },
@@ -87,6 +86,17 @@
       "rating": "4.9",
       "badge": "New"
     }
+  ],
+  "announcements": [
+    {
+      "title": "Welcome to Lalit Creative",
+      "message": "Sabhi premium apps 100% working hain. Roz update milta rahega.",
+      "date": "2026-10-19"
+    },
+    {
+      "title": "Naya app add hua",
+      "message": "App 8 ab download ke liye available hai.",
+      "date": "2026-10-18"
+    }
   ]
 }
-
