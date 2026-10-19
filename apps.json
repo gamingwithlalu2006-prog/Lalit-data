@@ -1,6 +1,6 @@
 {
   "users": [
-    { "name": "Rahul", "password": "rahul4821", "expires": "2026-11-19" },
+    { "name": "Lalit", "password": "rahul4821", "expires": "2027-11-19" },
     { "name": "Amit", "password": "amit7305", "expires": "2026-11-25" }
   ],
   "apps": [
