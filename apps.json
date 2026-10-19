@@ -1,7 +1,7 @@
 {
   "users": [
-    { "name": "Lalit", "password": "rahul4821", "expires": "2027-11-19" },
-    { "name": "Amit", "password": "amit7305", "expires": "2027-11-25" }
+    { "name": "Lalit", "password": "Lalit2010", "expires": "2027-11-19" },
+    { "name": "Amit", "password": "amit7305", "expires": "2026-11-25" }
   ],
   "apps": [
     {
@@ -12,6 +12,76 @@
       "version": "v1.0",
       "size": "20 MB",
       "rating": "4.8",
+      "badge": "New"
+    },
+    {
+      "name": "My App 2",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Photo",
+      "version": "v1.0",
+      "size": "25 MB",
+      "rating": "4.7",
+      "badge": "Updated"
+    },
+    {
+      "name": "My App 3",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Video",
+      "version": "v1.0",
+      "size": "30 MB",
+      "rating": "4.9",
+      "badge": ""
+    },
+    {
+      "name": "My App 4",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Music",
+      "version": "v1.0",
+      "size": "18 MB",
+      "rating": "4.6",
+      "badge": "New"
+    },
+    {
+      "name": "My App 5",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Tools",
+      "version": "v1.0",
+      "size": "22 MB",
+      "rating": "4.8",
+      "badge": ""
+    },
+    {
+      "name": "My App 6",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Photo",
+      "version": "v1.0",
+      "size": "35 MB",
+      "rating": "4.5",
+      "badge": "Updated"
+    },
+    {
+      "name": "My App 7",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Video",
+      "version": "v1.0",
+      "size": "40 MB",
+      "rating": "4.7",
+      "badge": ""
+    },
+    {
+      "name": "My App 8",
+      "desc": "Short description",
+      "url": "https://t.me/yourchannel",
+      "category": "Music",
+      "version": "v1.0",
+      "size": "15 MB",
+      "rating": "4.9",
       "badge": "New"
     }
   ]
