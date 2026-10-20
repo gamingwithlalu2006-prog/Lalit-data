@@ -8,12 +8,20 @@
 <style>
   :root {
     --bg: #e8dfc9; --card: #ffffff; --soft: #f7f2e4; --line: #e2d6b8;
-    --text: #1d1a14; --muted: #7a705c; --gold: #9a7400; --gold-grad: linear-gradient(135deg, #c9a227, #8a6a00);
+    --text: #1d1a14; --muted: #7a705c; --gold: #9a7400;
+    --gold-grad: linear-gradient(135deg, #c9a227, #8a6a00);
   }
-  body.dark {
+  body[data-theme="dark"] {
     --bg: #0f0e0b; --card: #1b1913; --soft: #221f16; --line: #3a3322;
-    --text: #f5efe0; --muted: #a79d86; --gold: #e0b84a; --gold-grad: linear-gradient(135deg, #e0b84a, #a8841c);
+    --text: #f5efe0; --muted: #a79d86; --gold: #e0b84a;
+    --gold-grad: linear-gradient(135deg, #e0b84a, #a8841c);
   }
+  body[data-theme="emerald"] {
+    --bg: #0c1f1a; --card: #133029; --soft: #1a3d34; --line: #24574a;
+    --text: #e9f7f1; --muted: #8fbfae; --gold: #5fe0b0;
+    --gold-grad: linear-gradient(135deg, #7ff0c4, #2fb887);
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body { min-height: 100%; }
   body {
@@ -55,7 +63,6 @@
     width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--gold);
     background: var(--soft); color: var(--gold); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
   }
-  .bell-on { background: var(--gold-grad); color: #111; border: none; font-size: 13px; font-weight: 700; padding: 0 12px; height: 40px; border-radius: 12px; cursor: pointer; }
   .hero-btns { display: grid; grid-template-columns: 1.1fr 1fr; gap: 10px; margin-top: 14px; }
   .btn-tg { background: var(--gold-grad); color: #111; border-radius: 12px; padding: 12px; font-weight: 700; font-size: 14px; text-decoration: none; text-align: center; }
   .btn-search { background: var(--soft); color: var(--gold); border: 1px solid var(--gold); border-radius: 12px; padding: 12px; font-weight: 700; font-size: 14px; cursor: pointer; }
@@ -95,10 +102,10 @@
   .empty { text-align: center; color: var(--muted); padding: 30px 0; display: none; }
   .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px 0 10px; }
 
-  /* Bottom nav */
+  /* Bottom nav (3 items) */
   .bottom-nav {
     position: fixed; left: 50%; transform: translateX(-50%); bottom: 0; width: 100%; max-width: 480px; z-index: 50;
-    background: var(--card); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--card); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr);
     padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px));
   }
   .nav-item { text-align: center; font-size: 12px; text-decoration: none; cursor: pointer; background: none; border: none; color: var(--muted); }
@@ -124,7 +131,7 @@
   .info-row:last-child { border-bottom: none; }
   .info-row span { color: var(--muted); }
 
-  /* Carousel: arrows + dots + swipe */
+  /* Carousel */
   .car { position: relative; background: #000; border-radius: 16px; overflow: hidden; height: 440px; touch-action: pan-y; }
   .car-track { display: flex; height: 100%; transition: transform .35s ease; }
   .slide { flex: 0 0 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
@@ -146,7 +153,7 @@
   }
 </style>
 </head>
-<body>
+<body data-theme="cream">
 
 <div id="splash">
   <div class="logo" id="appName">LALIT MODS</div>
@@ -165,8 +172,7 @@
           <div class="brand-tag" id="brandTag">LALIT CREATIVE</div>
         </div>
         <div class="brand-actions">
-          <button class="round" id="themeBtn" title="Theme">☀</button>
-          <button class="bell-on" id="bellBtn">🔔 On</button>
+          <button class="round" id="themeBtn" title="Theme badlo" aria-label="Change theme">☀</button>
         </div>
       </div>
       <div class="hero-btns">
@@ -204,7 +210,6 @@
   <button class="nav-item active" id="navHome"><span class="ico">⌂</span>Home</button>
   <a class="nav-item" href="update/"><span class="ico">📢</span>Updates</a>
   <a class="nav-item" href="https://t.me/+kFJy0orjkYdjZjM1" target="_blank" rel="noopener"><span class="ico">✎</span>Request</a>
-  <button class="nav-item" id="navSettings"><span class="ico">⚙</span>Settings</button>
 </nav>
 
 <script>
@@ -218,6 +223,27 @@
   const detailEl = document.getElementById("detail");
   const detailContent = document.getElementById("detailContent");
 
+  // ===== Themes: Cream -> Dark -> Emerald =====
+  const THEMES = [
+    { id: "cream",   icon: "☀", meta: "#e8dfc9" },
+    { id: "dark",    icon: "☾", meta: "#0f0e0b" },
+    { id: "emerald", icon: "🌿", meta: "#0c1f1a" }
+  ];
+  let themeIndex = 0;
+
+  function applyTheme(i) {
+    themeIndex = i;
+    const t = THEMES[i];
+    document.body.setAttribute("data-theme", t.id);
+    document.getElementById("themeBtn").textContent = t.icon;
+    document.querySelector('meta[name="theme-color"]').content = t.meta;
+  }
+
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    applyTheme((themeIndex + 1) % THEMES.length);
+  });
+
+  // ===== Config =====
   async function loadConfig() {
     try {
       const res = await fetch("config.json?v=" + Date.now(), { cache: "no-store" });
@@ -308,7 +334,6 @@
     });
   }
 
-  // Arrows and dots (event delegation)
   detailContent.addEventListener("click", e => {
     if (e.target.closest("#carPrev")) { goCar(carIdx - 1); return; }
     if (e.target.closest("#carNext")) { goCar(carIdx + 1); return; }
@@ -316,7 +341,6 @@
     if (dot) goCar(Number(dot.dataset.i));
   });
 
-  // Swipe (touch)
   let touchX = null;
   detailContent.addEventListener("touchstart", e => {
     if (e.target.closest("#car")) touchX = e.touches[0].clientX;
@@ -328,6 +352,7 @@
     if (Math.abs(dx) > 40) goCar(dx < 0 ? carIdx + 1 : carIdx - 1);
   });
 
+  // ===== Detail page =====
   function openDetail(a) {
     detailContent.innerHTML = `
       <button class="back" id="backBtn">‹ Back to Home</button>
@@ -376,7 +401,7 @@
     if (card) openDetail(APPS[Number(card.dataset.index)]);
   });
 
-  // Search
+  // ===== Search =====
   document.getElementById("searchToggle").addEventListener("click", () => {
     const box = document.getElementById("searchBox");
     box.classList.toggle("open");
@@ -387,28 +412,13 @@
     render(APPS.filter(a => a.name.toLowerCase().includes(q) || a.cat.toLowerCase().includes(q)));
   });
 
-  // Theme
-  function toggleTheme() {
-    document.body.classList.toggle("dark");
-    const dark = document.body.classList.contains("dark");
-    document.querySelector('meta[name="theme-color"]').content = dark ? "#0f0e0b" : "#e8dfc9";
-    document.getElementById("themeBtn").textContent = dark ? "☾" : "☀";
-  }
-  document.getElementById("themeBtn").addEventListener("click", toggleTheme);
-  document.getElementById("navSettings").addEventListener("click", toggleTheme);
-
-  // Bell
-  document.getElementById("bellBtn").addEventListener("click", e => {
-    const on = e.currentTarget.textContent.includes("On");
-    e.currentTarget.textContent = on ? "🔕 Off" : "🔔 On";
-  });
-
-  // Home
+  // ===== Home =====
   document.getElementById("navHome").addEventListener("click", () => {
     closeDetail();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  // ===== Splash =====
   function showMain() {
     document.getElementById("splash").classList.add("hide");
     document.getElementById("main").classList.add("show");
@@ -416,6 +426,8 @@
   document.getElementById("splash").addEventListener("click", showMain);
   setTimeout(showMain, 3500);
   setTimeout(showMain, 6000);
+
+  applyTheme(0);
   loadConfig();
 </script>
 </body>
