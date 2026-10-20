@@ -2,15 +2,15 @@
   "appName": "LALIT MODS",
   "brandName": "LalitMods",
   "brandTag": "LALIT CREATIVE",
-  "telegramUrl": "https://t.me/yourchannel",
+  "telegramUrl": "https://t.me/+kFJy0orjkYdjZjM1",
   "apps": [
-    { "name": "Sekho", "category": "education", "sizeMB": 85.4, "rating": 4.9, "letter": "S", "downloadUrl": "https://t.me/c/4384409005/3" },
-    { "name": "Photo Editor Gold", "category": "Photography", "sizeMB": 42.1, "rating": 4.6, "letter": "P", "downloadUrl": "https://t.me/YOUR_LINK_2" },
-    { "name": "Music Player Plus", "category": "Music · Audio", "sizeMB": 28.9, "rating": 4.5, "letter": "M", "downloadUrl": "https://t.me/YOUR_LINK_3" },
-    { "name": "Game Booster Pro", "category": "Tools · Gaming", "sizeMB": 16.3, "rating": 4.8, "letter": "G", "downloadUrl": "https://t.me/YOUR_LINK_4" },
-    { "name": "VPN Shield Pro", "category": "Tools · Privacy", "sizeMB": 22.7, "rating": 4.4, "letter": "S", "downloadUrl": "https://t.me/YOUR_LINK_5" },
-    { "name": "PDF Reader Pro", "category": "Productivity", "sizeMB": 19.5, "rating": 4.6, "letter": "R", "downloadUrl": "https://t.me/YOUR_LINK_6" },
-    { "name": "Keyboard Theme Studio", "category": "Personalization", "sizeMB": 35.2, "rating": 4.3, "letter": "K", "downloadUrl": "https://t.me/YOUR_LINK_7" },
-    { "name": "File Manager Plus", "category": "Tools · Files", "sizeMB": 12.8, "rating": 4.5, "letter": "F", "downloadUrl": "https://t.me/YOUR_LINK_8" }
+    { "name": "Movie Box", "category": "Anime Movie series", "sizeMB": 71.2.4, "rating": 4.8, "letter": "M", "downloadUrl": "https://t.me/c/3247140242/287" },
+    { "name": "Remini Pro", "category": "AI photo cleaner", "sizeMB": 212.2, "rating": 4.6, "letter": "R", "downloadUrl": "https://t.me/c/3247140242/279" },
+    { "name": "Story Tv", "category": "Short TV Series", "sizeMB": 45.9, "rating": 4.6, "letter": "S", "downloadUrl": "https://t.me/c/3247140242/274" },
+    { "name": "Pocket Fm Pro", "category": "Story radio", "sizeMB": 115.3, "rating": 4.8, "letter": "P", "downloadUrl": "https://t.me/c/3247140242/268" },
+    { "name": "CapCut Pro", "category": "professional editing", "sizeMB": 313.7, "rating": 4.9, "letter": "C", "downloadUrl": "https://t.me/c/3247140242/293" },
+    { "name": "VN editor", "category": "editing", "sizeMB": 262.5, "rating": 4.6, "letter": "VN", "downloadUrl": "https://t.me/c/3247140242/211" },
+    { "name": "Alright TV", "category": "Short TV Series Movie", "sizeMB": 8.2, "rating": 4.9, "letter": "A", "downloadUrl": "https://t.me/c/3247140242/192" },
+    { "name": "Truecaller premium", "category": "call receiver", "sizeMB": 84.8, "rating": 4.⁹, "letter": "T", "downloadUrl": "https://t.me/c/3247140242/137" }
   ]
 }
