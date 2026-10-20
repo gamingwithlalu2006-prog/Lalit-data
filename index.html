@@ -104,6 +104,20 @@
   .search input::placeholder { color: var(--muted); }
   .search:focus-within { border-color: var(--accent); }
 
+  .promo {
+    margin: 14px 16px 0;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1.5px solid var(--accent);
+    background: linear-gradient(135deg, rgba(212,175,55,.15), rgba(212,175,55,.04));
+    box-shadow: 0 0 18px rgba(212,175,55,.18);
+  }
+  .promo ul { list-style: none; display: grid; gap: 8px; }
+  .promo li {
+    font-size: 15px; font-weight: 700; color: var(--accent2);
+    display: flex; align-items: center; gap: 8px;
+  }
+
   .list { padding: 14px 16px 40px; display: grid; gap: 14px; }
   .card {
     background: var(--surface); border: 1px solid var(--surface2);
@@ -153,6 +167,14 @@
     </div>
   </header>
 
+  <div class="promo">
+    <ul>
+      <li>✅ 100% Working Mod</li>
+      <li>🔄 Daily Update</li>
+      <li>🛟 24/7 Support</li>
+    </ul>
+  </div>
+
   <section class="list" id="list"></section>
   <div class="empty" id="empty">Koi app nahi mila.</div>
   <div class="footer">© LalitMods · Premium Team</div>
@@ -175,7 +197,7 @@
       applyConfig({
         appName: "LALIT MODS",
         brandName: "LalitMods",
-        brandTag: "PREMIUM TEAM",
+        brandTag: "100% working mods",
         telegramUrl: "https://t.me/yourchannel",
         apps: []
       });
