@@ -1,0 +1,16 @@
+{
+  "appName": "LALIT MODS",
+  "brandName": "LalitMods",
+  "brandTag": "PREMIUM TEAM",
+  "telegramUrl": "https://t.me/yourchannel",
+  "apps": [
+    { "name": "Video Editor Pro", "category": "Video · Editing", "sizeMB": 85.4, "rating": 4.7, "letter": "V" },
+    { "name": "Photo Editor Gold", "category": "Photography", "sizeMB": 42.1, "rating": 4.6, "letter": "P" },
+    { "name": "Music Player Plus", "category": "Music · Audio", "sizeMB": 28.9, "rating": 4.5, "letter": "M" },
+    { "name": "Game Booster Pro", "category": "Tools · Gaming", "sizeMB": 16.3, "rating": 4.8, "letter": "G" },
+    { "name": "VPN Shield Pro", "category": "Tools · Privacy", "sizeMB": 22.7, "rating": 4.4, "letter": "S" },
+    { "name": "PDF Reader Pro", "category": "Productivity", "sizeMB": 19.5, "rating": 4.6, "letter": "R" },
+    { "name": "Keyboard Theme Studio", "category": "Personalization", "sizeMB": 35.2, "rating": 4.3, "letter": "K" },
+    { "name": "File Manager Plus", "category": "Tools · Files", "sizeMB": 12.8, "rating": 4.5, "letter": "F" }
+  ]
+}
