@@ -4,13 +4,93 @@
   "brandTag": "LALIT CREATIVE",
   "telegramUrl": "https://t.me/+kFJy0orjkYdjZjM1",
   "apps": [
-    { "name": "Movie Box", "category": "Anime Movie series", "sizeMB": 71.4, "rating": 4.8, "letter": "M", "downloadUrl": "https://t.me/c/3247140242/287" },
-    { "name": "Remini Pro", "category": "AI photo cleaner", "sizeMB": 212.2, "rating": 4.6, "letter": "R", "downloadUrl": "https://t.me/c/3247140242/279" },
-    { "name": "Story Tv", "category": "Short TV Series", "sizeMB": 45.9, "rating": 4.6, "letter": "S", "downloadUrl": "https://t.me/c/3247140242/274" },
-    { "name": "Pocket Fm Pro", "category": "Story radio", "sizeMB": 115.3, "rating": 4.8, "letter": "P", "downloadUrl": "https://t.me/c/3247140242/268" },
-    { "name": "CapCut Pro", "category": "professional editing", "sizeMB": 313.7, "rating": 4.9, "letter": "C", "downloadUrl": "https://t.me/c/3247140242/293" },
-    { "name": "VN editor", "category": "editing", "sizeMB": 262.5, "rating": 4.6, "letter": "VN", "downloadUrl": "https://t.me/c/3247140242/211" },
-    { "name": "Alright TV", "category": "Short TV Series Movie", "sizeMB": 8.2, "rating": 4.9, "letter": "A", "downloadUrl": "https://t.me/c/3247140242/192" },
-    { "name": "Truecaller premium", "category": "call receiver", "sizeMB": 84.8, "rating": 4.9, "letter": "T", "downloadUrl": "https://t.me/c/3247140242/137" }
+    {
+      "name": "Movie Box",
+      "category": "Anime Movie series",
+      "sizeMB": 71.4,
+      "rating": 4.8,
+      "letter": "M",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "Anime aur movie series ek hi jagah par dekhein.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    },
+    {
+      "name": "Remini Pro",
+      "category": "AI photo cleaner",
+      "sizeMB": 212.2,
+      "rating": 4.6,
+      "letter": "R",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "AI se photo ko clear aur sharp banayein.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    },
+    {
+      "name": "Story Tv",
+      "category": "Short TV Series",
+      "sizeMB": 45.9,
+      "rating": 4.6,
+      "letter": "S",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "Short TV series aur stories dekhein.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    },
+    {
+      "name": "Pocket Fm Pro",
+      "category": "Story radio",
+      "sizeMB": 115.3,
+      "rating": 4.8,
+      "letter": "P",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "Audio stories aur radio sunein.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    },
+    {
+      "name": "CapCut Pro",
+      "category": "professional editing",
+      "sizeMB": 313.7,
+      "rating": 4.9,
+      "letter": "C",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "Video edit karne ke liye professional tools.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    },
+    {
+      "name": "VN editor",
+      "category": "editing",
+      "sizeMB": 262.5,
+      "rating": 4.6,
+      "letter": "VN",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "Simple aur fast video editing app.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    },
+    {
+      "name": "Alright TV",
+      "category": "Short TV Series Movie",
+      "sizeMB": 8.2,
+      "rating": 4.9,
+      "letter": "A",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "Short TV series aur movies ka collection.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    },
+    {
+      "name": "Truecaller premium",
+      "category": "call receiver",
+      "sizeMB": 84.8,
+      "rating": 4.9,
+      "letter": "T",
+      "version": "1.0",
+      "updated": "20 Oct 2026",
+      "description": "Unknown calls ki pehchan aur spam block karein.",
+      "downloadUrl": "https://t.me/+kFJy0orjkYdjZjM1"
+    }
   ]
 }
