@@ -124,7 +124,7 @@
   .card {
     background: var(--surface); border: 1px solid var(--surface2);
     border-radius: 18px; padding: 14px; display: flex; gap: 14px; align-items: center;
-    transition: transform .2s, border-color .2s;
+    transition: transform .2s, border-color .2s; cursor: pointer;
   }
   .card:active { transform: scale(.98); }
   .card:hover { border-color: var(--accent); }
@@ -158,8 +158,42 @@
     background: var(--surface);
   }
   .bottom-btn.primary { background: var(--grad); color: #111; border-color: transparent; }
-
   .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 0 16px 30px; }
+
+  /* ===== Detail popup ===== */
+  #overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.6); backdrop-filter: blur(3px);
+    display: none; align-items: flex-end; justify-content: center;
+  }
+  #overlay.open { display: flex; animation: fade .25s ease; }
+  .sheet {
+    width: 100%; max-width: 520px; max-height: 85vh; overflow-y: auto;
+    background: var(--surface); border: 1px solid var(--surface2);
+    border-radius: 22px 22px 0 0; padding: 20px 18px 28px;
+    animation: up .3s ease;
+  }
+  @keyframes up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .sheet-head { display: flex; gap: 14px; align-items: center; }
+  .sheet-head .icon { flex: 0 0 70px; height: 70px; font-size: 26px; }
+  .sheet-title { font-size: 19px; font-weight: 800; }
+  .sheet-cat { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .close {
+    margin-left: auto; width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--surface2); background: var(--surface2);
+    color: var(--text); font-size: 16px; cursor: pointer; flex: 0 0 36px;
+  }
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 18px 0;
+  }
+  .stat {
+    background: var(--surface2); border-radius: 12px; padding: 10px 6px; text-align: center;
+  }
+  .stat b { display: block; font-size: 15px; color: var(--accent2); }
+  .stat span { font-size: 11px; color: var(--muted); }
+  .sec-title { font-size: 14px; font-weight: 700; color: var(--accent); margin: 16px 0 6px; }
+  .sec-text { font-size: 14px; line-height: 1.6; color: var(--text); white-space: pre-line; }
+  .sheet .dl { width: 100%; text-align: center; margin-top: 20px; padding: 13px; font-size: 15px; }
 </style>
 </head>
 <body>
@@ -205,6 +239,11 @@
   <div class="footer">© LalitMods · Lalit Creative</div>
 </div>
 
+<!-- Detail popup -->
+<div id="overlay">
+  <div class="sheet" id="sheet"></div>
+</div>
+
 <script>
   const THEMES = ["gold", "ocean", "light"];
   let themeIndex = 0;
@@ -212,6 +251,10 @@
 
   const listEl = document.getElementById("list");
   const emptyEl = document.getElementById("empty");
+  const overlay = document.getElementById("overlay");
+  const sheet = document.getElementById("sheet");
+
+  const DEFAULT_INSTALL = "1. Telegram par Download button dabao.\n2. File download hone do.\n3. Phone settings mein 'Unknown sources' allow karo.\n4. File tap karke install karo.";
 
   async function loadConfig() {
     try {
@@ -223,7 +266,7 @@
         appName: "LALIT MODS",
         brandName: "LalitMods",
         brandTag: "LALIT CREATIVE",
-        telegramUrl: "https://t.me/yourchannel",
+        telegramUrl: "https://t.me/+kFJy0orjkYdjZjM1",
         apps: []
       });
     }
@@ -241,14 +284,18 @@
       size: Number(a.sizeMB) || 0,
       rating: Number(a.rating) || 0,
       letter: (a.letter || a.name.charAt(0)).toUpperCase(),
-      url: a.downloadUrl || cfg.telegramUrl || "#"
+      url: a.downloadUrl || cfg.telegramUrl || "#",
+      version: a.version || "1.0",
+      updated: a.updated || "-",
+      description: a.description || "Is app ki details jaldi add ki jayengi.",
+      install: a.install || DEFAULT_INSTALL
     }));
     render(APPS);
   }
 
   function render(items) {
     listEl.innerHTML = items.map(a => `
-      <div class="card">
+      <div class="card" data-index="${APPS.indexOf(a)}">
         <div class="icon">${a.letter}</div>
         <div class="info">
           <div class="name">${a.name}</div>
@@ -262,6 +309,53 @@
       </div>`).join("");
     emptyEl.style.display = items.length ? "none" : "block";
   }
+
+  function openDetail(a) {
+    sheet.innerHTML = `
+      <div class="sheet-head">
+        <div class="icon">${a.letter}</div>
+        <div>
+          <div class="sheet-title">${a.name}</div>
+          <div class="sheet-cat">${a.cat}</div>
+        </div>
+        <button class="close" id="closeBtn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>${a.size.toFixed(1)} MB</b><span>Size</span></div>
+        <div class="stat"><b>⭐ ${a.rating.toFixed(1)}</b><span>Rating</span></div>
+        <div class="stat"><b>v${a.version}</b><span>Version</span></div>
+      </div>
+
+      <div class="sec-title">Update date</div>
+      <div class="sec-text">${a.updated}</div>
+
+      <div class="sec-title">Description</div>
+      <div class="sec-text">${a.description}</div>
+
+      <div class="sec-title">Kaise install karein</div>
+      <div class="sec-text">${a.install}</div>
+
+      <a class="dl" href="${a.url}" target="_blank" rel="noopener">⬇ Download</a>
+    `;
+    overlay.classList.add("open");
+    document.getElementById("closeBtn").addEventListener("click", closeDetail);
+  }
+
+  function closeDetail() {
+    overlay.classList.remove("open");
+  }
+
+  listEl.addEventListener("click", e => {
+    if (e.target.closest(".dl")) return;
+    const card = e.target.closest(".card");
+    if (!card) return;
+    openDetail(APPS[Number(card.dataset.index)]);
+  });
+
+  overlay.addEventListener("click", e => {
+    if (e.target === overlay) closeDetail();
+  });
 
   function showMain() {
     document.getElementById("splash").classList.add("hide");
