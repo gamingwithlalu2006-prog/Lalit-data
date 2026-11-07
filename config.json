@@ -6,14 +6,14 @@
   "apps": [
     {
       "name": "Movie Box",
-      "category": "Anime Movie series",
-      "sizeMB": 112.4,
+      "category": "🌍 Multiple Entertainment Categories\n🔥 Latest & Trending Content\n🇮🇳 Bollywood & South Indian\n🇰🇷 Korean Dramas & Anime\n📺 TV Shows & Documentaries\n🎭 Multiple Genres",
+      "sizeMB": 63,
       "rating": 4.8,
       "letter": "M",
-      "version": "1.0",
-      "updated": "21 Nov 2026",
-      "description": "Anime aur movie series ek hi jagah par dekhein.",
-      "downloadUrl": "https://t.me/c/4498721447/3",
+      "version": "1.1",
+      "updated": "07 Nov 2026",
+      "description": "Movie Box एक entertainment platform है जहाँ आपको Movies, Web Series, TV Shows, Anime और बहुत कुछ एक ही जगह पर देखने को मिलता है।",
+      "downloadUrl": "https://t.me/c/3247140242/406",
       "screenshots": [
         "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/Moviebox1.jpg",
         "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/moviebox2.jpg",
