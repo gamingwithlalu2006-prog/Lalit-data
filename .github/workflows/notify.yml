@@ -1,0 +1,40 @@
+name: Send notification
+on:
+  push:
+    paths:
+      - 'update/notify.json'
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Send to Firebase
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          pip install google-auth requests
+          python - <<'EOF'
+          import json, os, requests
+          from google.oauth2 import service_account
+          from google.auth.transport.requests import Request
+
+          sa = json.loads(os.environ["SA"])
+          creds = service_account.Credentials.from_service_account_info(
+              sa, scopes=["https://www.googleapis.com/auth/firebase.messaging"])
+          creds.refresh(Request())
+
+          n = json.load(open("update/notify.json"))
+          if not n.get("body"):
+              raise SystemExit("body khali hai")
+
+          r = requests.post(
+              "https://fcm.googleapis.com/v1/projects/" + sa["project_id"] + "/messages:send",
+              headers={"Authorization": "Bearer " + creds.token},
+              json={"message": {
+                  "topic": "all",
+                  "notification": {"title": n.get("title", "LalitMods"), "body": n["body"]},
+                  "android": {"priority": "HIGH", "notification": {"channel_id": "lalit_updates"}}
+              }})
+          print(r.status_code, r.text)
+          r.raise_for_status()
+          EOF
