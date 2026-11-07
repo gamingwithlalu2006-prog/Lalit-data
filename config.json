@@ -36,5 +36,9 @@
         "https://LINK-3.jpg"
       ]
     }
-  ]
+  ],
+  "maintenance": {
+    "on": true,
+    "message": "Kuch der mein wapas aayenge."
+  }
 }
