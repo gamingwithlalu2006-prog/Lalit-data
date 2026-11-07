@@ -85,22 +85,6 @@
       ]
     },
     {
-      "name": "VN editor",
-      "category": "editing",
-      "sizeMB": 262.5,
-      "rating": 4.6,
-      "letter": "VN",
-      "version": "1.0",
-      "updated": "20 Oct 2026",
-      "description": "Simple aur fast video editing app.",
-      "downloadUrl": "https://t.me/c/4498721447/4",
-      "screenshots": [
-        "https://LINK-1.jpg",
-        "https://LINK-2.jpg",
-        "https://LINK-3.jpg"
-      ]
-    },
-    {
       "name": "Truecaller premium",
       "category": "call receiver",
       "sizeMB": 84.8,
