@@ -38,7 +38,7 @@
     }
   ],
   "maintenance": {
-    "on": true,
+    "on": false,
     "message": "Kuch der mein wapas aayenge."
   }
 }
