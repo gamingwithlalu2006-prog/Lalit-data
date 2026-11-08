@@ -20,19 +20,15 @@
     },
     {
       "name": "Truecaller premium",
-      "category": "call receiver",
+      "category": "Communication | Caller ID & Spam Protection | Premium Utility App",
       "sizeMB": 84.8,
       "rating": 4.9,
       "letter": "T",
-      "version": "1.0",
-      "updated": "20 Oct 2026",
-      "description": "Unknown calls ki pehchan aur spam block karein.",
-      "downloadUrl": "https://t.me/c/4498721447/4",
-      "screenshots": [
-        "https://LINK-1.jpg",
-        "https://LINK-2.jpg",
-        "https://LINK-3.jpg"
-      ]
+      "version": "1.2",
+      "updated": "8 Nov 2026",
+      "description": "Truecaller Premium – Smart Caller ID & Spam Protection\n\nअपने Calling Experience को बनाएं ज्यादा सुरक्षित, स्मार्ट और आसान Truecaller Premium के साथ।\n\nCategory: Communication & Security\nSubcategory: Caller ID & Spam Protection\nApp Type: Premium Utility App",
+      "downloadUrl": "https://t.me/c/4498721447/11",
+      "screenshots": []
     }
   ],
   "maintenance": {
