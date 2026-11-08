@@ -1,3 +1,5 @@
+Ye poori index.html hai: purana sab (splash, themes, search, screenshots) waisa hi, aur ab isme mobile fix, app ki icon photo aur admin app se badalne wale promo/footer/menu/maintenance teeno jude hain.
+GitHub → index.html → ✏️ edit → sab select karke delete → ye paste karo → Commit changes:
 <!DOCTYPE html>
 <html lang="hi" data-theme="gold">
 <head>
@@ -166,6 +168,21 @@
   /* App icon photo (admin app se) */
   .app-icon, .detail-icon { overflow: hidden; }
   .app-icon img, .detail-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ===== Mobile fix: content screen se bahar na nikle ===== */
+  html, body { overflow-x: hidden; max-width: 100%; }
+  .wrap, .hero, .promo, .app-card, .app-info, .detail-wrap, .box, .detail-card { min-width: 0; max-width: 100%; }
+  .list { grid-template-columns: minmax(0, 1fr); }
+  .promo ul { grid-template-columns: minmax(0, 1fr); }
+  .hero-btns { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .detail-card > div:last-child { min-width: 0; }
+  .box-text, .detail-title, .detail-cat, .app-name, .app-cat, .info-row b {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .info-row { gap: 12px; }
+  .info-row b { text-align: right; }
+  img { max-width: 100%; }
 </style>
 </head>
 <body>
