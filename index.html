@@ -162,6 +162,10 @@
     display: block; width: 100%; margin-top: 16px; background: var(--gold-grad); color: #111; border: none;
     border-radius: 14px; padding: 15px; font-size: 16px; font-weight: 800; text-align: center; text-decoration: none;
   }
+
+  /* App icon photo (admin app se) */
+  .app-icon, .detail-icon { overflow: hidden; }
+  .app-icon img, .detail-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
 </style>
 </head>
 <body>
@@ -282,6 +286,7 @@
       size: Number(a.sizeMB) || 0,
       rating: Number(a.rating) || 0,
       letter: (a.letter || a.name.charAt(0)).toUpperCase(),
+      icon: a.icon || "",
       url: a.downloadUrl || TG,
       version: a.version || "1.0",
       updated: a.updated || "-",
@@ -289,12 +294,60 @@
       screenshots: Array.isArray(a.screenshots) ? a.screenshots.slice(0, 5) : []
     }));
     render(APPS);
+    applyExtras(cfg);
+  }
+
+  // ===== Admin app se badalne wale hisse: promo, footer, bottom menu, maintenance =====
+  function applyExtras(cfg) {
+    if (Array.isArray(cfg.promo) && cfg.promo.length) {
+      const ul = document.querySelector(".promo ul");
+      if (ul) {
+        ul.innerHTML = "";
+        cfg.promo.forEach(t => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          ul.appendChild(li);
+        });
+      }
+    }
+
+    if (cfg.footer) {
+      const f = document.querySelector(".footer");
+      if (f) f.textContent = cfg.footer;
+    }
+
+    if (Array.isArray(cfg.menu)) {
+      const items = document.querySelectorAll(".bottom-nav .nav-item");
+      cfg.menu.forEach((m, i) => {
+        const el = items[i];
+        if (!el) return;
+        const ico = el.querySelector(".ico");
+        if (m.icon && ico) ico.textContent = m.icon;
+        if (m.label) {
+          [...el.childNodes].forEach(n => { if (n.nodeType === 3) n.remove(); });
+          el.appendChild(document.createTextNode(m.label));
+        }
+      });
+    }
+
+    let mt = document.getElementById("maintenance");
+    if (cfg.maintenance && cfg.maintenance.on) {
+      if (!mt) {
+        mt = document.createElement("div");
+        mt.id = "maintenance";
+        mt.style.cssText = "position:fixed;inset:0;z-index:99999;background:#0b0b0f;color:#f0d060;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 20px sans-serif";
+        document.body.appendChild(mt);
+      }
+      mt.textContent = cfg.maintenance.message || "Maintenance chal raha hai";
+    } else if (mt) {
+      mt.remove();
+    }
   }
 
   function render(items) {
     listEl.innerHTML = items.map(a => `
       <div class="app-card" data-index="${APPS.indexOf(a)}">
-        <div class="app-icon">${a.letter}</div>
+        <div class="app-icon">${a.icon ? `<img src="${a.icon}" alt="" onerror="this.parentNode.textContent='${a.letter}'">` : a.letter}</div>
         <div class="app-info">
           <div class="app-name">${a.name}</div>
           <div class="app-cat">${a.cat}</div>
@@ -373,7 +426,7 @@
     detailContent.innerHTML = `
       <button class="back" id="backBtn">‹ Back to Home</button>
       <div class="detail-card">
-        <div class="detail-icon">${a.letter}</div>
+        <div class="detail-icon">${a.icon ? `<img src="${a.icon}" alt="" onerror="this.parentNode.textContent='${a.letter}'">` : a.letter}</div>
         <div>
           <div class="detail-title">${a.name}</div>
           <div class="detail-cat">${a.cat}</div>
