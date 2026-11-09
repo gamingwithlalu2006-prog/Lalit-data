@@ -39,6 +39,19 @@
       ]
     },
     {
+      "name": "SonyLiv Pro",
+      "category": "Entertainment / OTT Streaming / Premium Movies & Web Series",
+      "sizeMB": 76,
+      "rating": 4.8,
+      "letter": "S",
+      "version": "1.0",
+      "updated": "9 Nov 2026",
+      "description": "Sony LIV Pro – Premium Entertainment Experience 🎬\n\nEnjoy unlimited entertainment with Sony LIV Pro! Watch your favourite Movies, Web Series, TV Shows, Original Series and Live Sports in one place. Experience premium entertainment with exciting content across multiple genres, all in one app.\n\nCategory: Entertainment / OTT Streaming / Premium Movies & Web Series",
+      "downloadUrl": "https://t.me/c/4498721447/15",
+      "icon": "",
+      "screenshots": []
+    },
+    {
       "name": "Truecaller Premium",
       "category": "Communication | Caller ID & Spam Protection | Premium Utility App",
       "sizeMB": 84.8,
@@ -52,19 +65,6 @@
         "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/Truecaller_premium_1.jpg"
       ],
       "icon": "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/icons/truecaller_premium.png?v=1794116951681"
-    },
-    {
-      "name": "SonyLiv Pro",
-      "category": "Entertainment / OTT Streaming / Premium Movies & Web Series",
-      "sizeMB": 76,
-      "rating": 4.8,
-      "letter": "S",
-      "version": "1.0",
-      "updated": "9 Nov 2026",
-      "description": "Sony LIV Pro – Premium Entertainment Experience 🎬\n\nEnjoy unlimited entertainment with Sony LIV Pro! Watch your favourite Movies, Web Series, TV Shows, Original Series and Live Sports in one place. Experience premium entertainment with exciting content across multiple genres, all in one app.\n\nCategory: Entertainment / OTT Streaming / Premium Movies & Web Series",
-      "downloadUrl": "https://t.me/c/4498721447/15",
-      "icon": "",
-      "screenshots": []
     },
     {
       "name": "Capcut Pro",
