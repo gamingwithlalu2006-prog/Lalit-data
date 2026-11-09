@@ -89,7 +89,7 @@
     }
   ],
   "maintenance": {
-    "on": true,
-    "message": "Kuch der mein wapas aayenge."
+    "on": false,
+    "message": "App Update Ho Rha Hai 10 Mint baad Try Karna"
   }
 }
