@@ -121,5 +121,13 @@
   "maintenance": {
     "on": false,
     "message": "App Update Ho Rha Hai 10 Mint baad Try Karna"
+  },
+  "joinPopup": {
+    "on": true,
+    "mandatory": true,
+    "title": "Telegram Channel Join Karo",
+    "message": "Naye mods, updates aur support ke liye hamara Telegram channel join karna zaruri hai.",
+    "button": "✈ Telegram Join Karo",
+    "ver": 2
   }
 }
