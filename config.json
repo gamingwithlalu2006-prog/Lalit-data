@@ -89,6 +89,19 @@
       ]
     },
     {
+      "name": "Spotify Premium",
+      "category": "Music Streaming / Audio Entertainment / Premium Apps",
+      "sizeMB": 87,
+      "rating": 4.8,
+      "letter": "S",
+      "version": "1.1",
+      "updated": "10 Nov 2026",
+      "description": "🎵 Spotify Premium – Music Streaming App\n\nEnjoy an amazing music experience with Spotify Premium! Listen to your favourite songs, albums, playlists, podcasts, and trending music in one place. Discover new artists, explore different genres, and enjoy high-quality audio with a smooth and user-friendly interface.\n\n🎧 Category: Music & Entertainment\n🎶 Type: Music Streaming App\n✨ Experience: Premium Music Experience",
+      "downloadUrl": "https://t.me/c/4498721447/18",
+      "icon": "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/icons/spotify_premium.png?v=1794330311860",
+      "screenshots": []
+    },
+    {
       "name": "Capcut Pro",
       "category": "Video Editing / Photography & Design / Premium Apps",
       "sizeMB": 300,
@@ -104,19 +117,6 @@
         "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/capcut2.jpg",
         "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/capcut3.jpg"
       ]
-    },
-    {
-      "name": "Spotify Premium",
-      "category": "Music Streaming / Audio Entertainment / Premium Apps",
-      "sizeMB": 87,
-      "rating": 4.8,
-      "letter": "S",
-      "version": "1.1",
-      "updated": "10 Nov 2026",
-      "description": "🎵 Spotify Premium – Music Streaming App\n\nEnjoy an amazing music experience with Spotify Premium! Listen to your favourite songs, albums, playlists, podcasts, and trending music in one place. Discover new artists, explore different genres, and enjoy high-quality audio with a smooth and user-friendly interface.\n\n🎧 Category: Music & Entertainment\n🎶 Type: Music Streaming App\n✨ Experience: Premium Music Experience",
-      "downloadUrl": "https://t.me/c/4498721447/18",
-      "icon": "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/icons/spotify_premium.png?v=1794330311860",
-      "screenshots": []
     },
     {
       "name": "Truecaller Premium",
