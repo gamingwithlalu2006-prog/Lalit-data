@@ -402,4 +402,304 @@
       cfg.menu.forEach((m, i) => {
         const el = items[i];
         if (!el) return;
-    
+        const ico = el.querySelector(".ico");
+        if (m.icon && ico) ico.textContent = m.icon;
+        if (m.label) {
+          [...el.childNodes].forEach(n => { if (n.nodeType === 3) n.remove(); });
+          el.appendChild(document.createTextNode(m.label));
+        }
+      });
+    }
+
+    let mt = document.getElementById("maintenance");
+    if (cfg.maintenance && cfg.maintenance.on) {
+      if (!mt) {
+        mt = document.createElement("div");
+        mt.id = "maintenance";
+        mt.style.cssText = "position:fixed;inset:0;z-index:99999;background:#0b0b0f;color:#f0d060;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 20px sans-serif";
+        document.body.appendChild(mt);
+      }
+      mt.textContent = cfg.maintenance.message || "We are performing scheduled maintenance. Please check back shortly.";
+    } else if (mt) {
+      mt.remove();
+    }
+  }
+
+  // ===== Telegram join popup (first launch only) =====
+  function maybeShowJoin() {
+    if (!CFG || !MAIN_SHOWN || JOIN_SHOWN) return;
+    const jp = CFG.joinPopup || {};
+    if (jp.on === false) return;
+    const key = "lm_join_" + (jp.ver || 1);
+    try { if (localStorage.getItem(key) === "1") return; } catch (e) {}
+    JOIN_SHOWN = true;
+
+    const mustJoin = jp.mandatory !== false;
+    const ov = document.createElement("div");
+    ov.className = "join-ov";
+    const box = document.createElement("div");
+    box.className = "join-box";
+    box.innerHTML = '<div class="join-ico">✈</div><div class="join-title"></div><div class="join-msg"></div>';
+    box.querySelector(".join-title").textContent = jp.title || "Join Our Telegram Channel";
+    box.querySelector(".join-msg").textContent = jp.message ||
+      "Join our official Telegram channel to get the latest updates, new releases and support.";
+
+    const markDone = () => { try { localStorage.setItem(key, "1"); } catch (e) {} };
+
+    const go = document.createElement("a");
+    go.className = "join-go";
+    go.href = TG;
+    go.target = "_blank";
+    go.rel = "noopener";
+    go.textContent = jp.button || "✈ Join Telegram";
+    go.addEventListener("click", () => {
+      markDone();
+      setTimeout(() => ov.remove(), 400);
+    });
+    box.appendChild(go);
+
+    if (!mustJoin) {
+      const later = document.createElement("button");
+      later.className = "join-later";
+      later.textContent = "Maybe later";
+      later.addEventListener("click", () => { markDone(); ov.remove(); });
+      box.appendChild(later);
+    }
+
+    ov.appendChild(box);
+    document.body.appendChild(ov);
+  }
+
+  // ===== App list =====
+  function render(items) {
+    listEl.innerHTML = items.map(a => `
+      <div class="app-card" data-index="${APPS.indexOf(a)}">
+        <span class="ver-badge">v${a.version}</span>
+        <div class="app-icon">${a.icon ? `<img src="${a.icon}" alt="" onerror="this.parentNode.textContent='${a.letter}'">` : a.letter}</div>
+        <div class="app-info">
+          <div class="app-name">${a.name}</div>
+          <div class="app-cat">${a.cat}</div>
+          <div class="app-meta">
+            <span class="gold-txt">⭐ ${a.rating.toFixed(1)}</span>
+            <span>📦 ${a.size.toFixed(1)} MB</span>
+          </div>
+        </div>
+        <div class="app-cta">⬇ Download</div>
+      </div>`).join("");
+    emptyEl.textContent = LOAD_FAILED
+      ? "Unable to load apps. Please check your internet connection and try again."
+      : "No apps found.";
+    emptyEl.style.display = items.length ? "none" : "block";
+  }
+
+  // ===== Carousel =====
+  function carouselHtml(list) {
+    if (!list.length) return "";
+    const many = list.length > 1;
+    return `
+      <div class="box">
+        <div class="box-title">Screenshots</div>
+        <div class="car" id="car">
+          <div class="car-track" id="carTrack">
+            ${list.map(src => `<div class="slide"><img src="${src}" alt="screenshot" loading="lazy" onerror="this.style.display='none'"></div>`).join("")}
+          </div>
+          <button class="car-btn car-prev ${many ? "" : "car-hidden"}" id="carPrev" aria-label="Previous">‹</button>
+          <button class="car-btn car-next ${many ? "" : "car-hidden"}" id="carNext" aria-label="Next">›</button>
+        </div>
+        <div class="car-dots ${many ? "" : "car-hidden"}" id="carDots">
+          ${list.map((_, i) => `<button class="dot" data-i="${i}" aria-label="Photo ${i + 1}"></button>`).join("")}
+        </div>
+      </div>`;
+  }
+
+  function setupCarousel(n) {
+    carCount = n;
+    carIdx = 0;
+    updateCar();
+  }
+
+  function goCar(i) {
+    if (!carCount) return;
+    carIdx = (i + carCount) % carCount;
+    updateCar();
+  }
+
+  function updateCar() {
+    const track = document.getElementById("carTrack");
+    if (!track) return;
+    track.style.transform = `translateX(-${carIdx * 100}%)`;
+    document.querySelectorAll("#carDots .dot").forEach((d, i) => {
+      d.classList.toggle("active", i === carIdx);
+    });
+  }
+
+  detailContent.addEventListener("click", e => {
+    if (e.target.closest("#carPrev")) { goCar(carIdx - 1); return; }
+    if (e.target.closest("#carNext")) { goCar(carIdx + 1); return; }
+    const dot = e.target.closest("#carDots .dot");
+    if (dot) goCar(Number(dot.dataset.i));
+  });
+
+  let touchX = null;
+  detailContent.addEventListener("touchstart", e => {
+    if (e.target.closest("#car")) touchX = e.touches[0].clientX;
+  }, { passive: true });
+  detailContent.addEventListener("touchend", e => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 40) goCar(dx < 0 ? carIdx + 1 : carIdx - 1);
+  });
+
+  // ===== Detail page =====
+  function openDetail(a) {
+    detailContent.innerHTML = `
+      <button class="back" id="backBtn">‹ Back</button>
+      <div class="detail-card">
+        <div class="detail-icon">${a.icon ? `<img src="${a.icon}" alt="" onerror="this.parentNode.textContent='${a.letter}'">` : a.letter}</div>
+        <div>
+          <div class="detail-title">${a.name}</div>
+          <div class="detail-cat">${a.cat}</div>
+          <div class="pills" style="margin-top:8px">
+            <span class="pill gold">⭐ ${a.rating.toFixed(1)}</span>
+            <span class="pill">📦 ${a.size.toFixed(1)} MB</span>
+            <span class="pill">v${a.version}</span>
+          </div>
+        </div>
+      </div>
+
+      ${carouselHtml(a.screenshots)}
+
+      <div class="box">
+        <div class="box-title">About</div>
+        <div class="box-text">${a.description}</div>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Details</div>
+        <div class="info-row"><span>Version</span><b>v${a.version}</b></div>
+        <div class="info-row"><span>Size</span><b>${a.size.toFixed(1)} MB</b></div>
+        <div class="info-row"><span>Rating</span><b>⭐ ${a.rating.toFixed(1)}</b></div>
+        <div class="info-row"><span>Last updated</span><b>${a.updated}</b></div>
+      </div>
+
+      <a class="dl-btn" href="${a.url}" target="_blank" rel="noopener">⬇ Download v${a.version}</a>
+    `;
+    detailEl.classList.add("open");
+    detailEl.scrollTop = 0;
+    setupCarousel(a.screenshots.length);
+    document.getElementById("backBtn").addEventListener("click", goBackOrClose);
+    pushState("d");
+  }
+
+  function closeDetail() {
+    detailEl.classList.remove("open");
+  }
+
+  listEl.addEventListener("click", e => {
+    const card = e.target.closest(".app-card");
+    if (card) openDetail(APPS[Number(card.dataset.index)]);
+  });
+
+  // ===== Updates tab =====
+  function setActive(id) {
+    document.getElementById("navHome").classList.toggle("active", id === "navHome");
+    document.getElementById("navUpdates").classList.toggle("active", id === "navUpdates");
+  }
+
+  async function loadUpdates() {
+    updList.innerHTML = '<div class="upd-empty">Loading...</div>';
+    try {
+      const res = await fetch("update/announcements.json?v=" + Date.now(), { cache: "no-store" });
+      const arr = await res.json();
+      updList.innerHTML = "";
+      if (!Array.isArray(arr) || !arr.length) {
+        updList.innerHTML = '<div class="upd-empty">No updates yet. Please check back soon.</div>';
+        return;
+      }
+      arr.forEach(u => {
+        const card = document.createElement("div");
+        card.className = "upd-card";
+        const t = document.createElement("div");
+        t.className = "upd-title";
+        t.textContent = u.title || "LalitMods";
+        const d = document.createElement("div");
+        d.className = "upd-date";
+        d.textContent = u.date || "";
+        const x = document.createElement("div");
+        x.className = "upd-text";
+        x.textContent = u.text || "";
+        card.appendChild(t);
+        card.appendChild(d);
+        card.appendChild(x);
+        updList.appendChild(card);
+      });
+    } catch (e) {
+      updList.innerHTML = '<div class="upd-empty">Unable to load updates. Please check your connection and try again.</div>';
+    }
+  }
+
+  function openUpdates() {
+    if (updEl.classList.contains("open")) return;
+    updEl.classList.add("open");
+    updEl.scrollTop = 0;
+    setActive("navUpdates");
+    pushState("u");
+    loadUpdates();
+  }
+
+  function closeUpdates() {
+    updEl.classList.remove("open");
+    setActive("navHome");
+  }
+
+  document.getElementById("navUpdates").addEventListener("click", e => {
+    e.preventDefault();
+    openUpdates();
+  });
+
+  // ===== Search =====
+  document.getElementById("searchToggle").addEventListener("click", () => {
+    const box = document.getElementById("searchBox");
+    box.classList.toggle("open");
+    if (box.classList.contains("open")) document.getElementById("searchInput").focus();
+  });
+  document.getElementById("searchInput").addEventListener("input", e => {
+    const q = e.target.value.trim().toLowerCase();
+    render(APPS.filter(a => a.name.toLowerCase().includes(q) || a.cat.toLowerCase().includes(q)));
+  });
+
+  // ===== Home =====
+  document.getElementById("navHome").addEventListener("click", () => {
+    goBackOrClose();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // ===== Splash: shown only once per session =====
+  const splashEl = document.getElementById("splash");
+  const mainEl = document.getElementById("main");
+
+  function showMain() {
+    splashEl.classList.add("hide");
+    mainEl.classList.add("show");
+    MAIN_SHOWN = true;
+    setTimeout(maybeShowJoin, 400);
+  }
+
+  if (sessionStorage.getItem("lm_seen") === "1") {
+    splashEl.style.display = "none";
+    mainEl.style.animation = "none";
+    mainEl.classList.add("show");
+    MAIN_SHOWN = true;
+  } else {
+    sessionStorage.setItem("lm_seen", "1");
+    splashEl.addEventListener("click", showMain);
+    setTimeout(showMain, 3500);
+    setTimeout(showMain, 6000);
+  }
+
+  applyTheme(themeIndex);
+  loadConfig();
+</script>
+</body>
+</html>
