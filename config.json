@@ -72,23 +72,6 @@
       ]
     },
     {
-      "name": "Seekho Primium",
-      "category": "Education / Online Learning / Skill Development / Premium Courses",
-      "sizeMB": 38,
-      "rating": 4.9,
-      "letter": "S",
-      "version": "1.0",
-      "updated": "9 Nov 2026",
-      "description": "🎓 Sikho Premium – Learn & Grow\n\nSikho Premium के साथ अपनी Learning Journey को बनाएं और भी बेहतर! यहाँ आपको मिलते हैं Educational Videos, Skill Development, Online Courses और Knowledge से जुड़े बेहतरीन Learning Resources।\n\nअपनी Skills बढ़ाएं, नई चीजें सीखें और अपने Knowledge को एक नए Level पर ले जाएं। 🚀\n\n📚 Learn More | 💡 Upgrade Skills | 🎯 Achieve Goals",
-      "downloadUrl": "https://t.me/c/4498721447/16",
-      "icon": "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/icons/seekho_primium.png?v=1794214828021",
-      "screenshots": [
-        "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/sekho1.jpg",
-        "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/sekho2.jpg",
-        "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/sekho3.jpg"
-      ]
-    },
-    {
       "name": "Spotify Premium",
       "category": "Music Streaming / Audio Entertainment / Premium Apps",
       "sizeMB": 87,
@@ -149,5 +132,24 @@
     "message": "Join our official Telegram channel to receive the latest updates, new releases, and support",
     "button": "✈️ Join Telegram Channel",
     "ver": 3
-  }
+  },
+  "hiddenApps": [
+    {
+      "name": "Seekho Primium",
+      "category": "Education / Online Learning / Skill Development / Premium Courses",
+      "sizeMB": 38,
+      "rating": 4.9,
+      "letter": "S",
+      "version": "1.0",
+      "updated": "9 Nov 2026",
+      "description": "🎓 Sikho Premium – Learn & Grow\n\nSikho Premium के साथ अपनी Learning Journey को बनाएं और भी बेहतर! यहाँ आपको मिलते हैं Educational Videos, Skill Development, Online Courses और Knowledge से जुड़े बेहतरीन Learning Resources।\n\nअपनी Skills बढ़ाएं, नई चीजें सीखें और अपने Knowledge को एक नए Level पर ले जाएं। 🚀\n\n📚 Learn More | 💡 Upgrade Skills | 🎯 Achieve Goals",
+      "downloadUrl": "https://t.me/c/4498721447/16",
+      "icon": "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/icons/seekho_primium.png?v=1794214828021",
+      "screenshots": [
+        "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/sekho1.jpg",
+        "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/sekho2.jpg",
+        "https://raw.githubusercontent.com/gamingwithlalu2006-prog/Lalit-data/main/screenshots/sekho3.jpg"
+      ]
+    }
+  ]
 }
